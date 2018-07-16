@@ -3,6 +3,8 @@ import smtplib
 
 class MainApp:
     def __init__(self, root):
+        #set root
+        self.root = root
         #Top frame
         self.frame = Frame(root)
         self.frame.grid(column=0, row=0, columnspan=4, rowspan=4)
@@ -33,25 +35,22 @@ class MainApp:
         try:
             server = smtplib.SMTP_SSL("smtp.libero.it", 465)
             server.login(self.email.get(), self.password.get())
-            #open new window
-            window = Tkinter.TopLevel(root)
-            
+            self.controlbl["text"] = "CORRECT DATA!"
+            #destroying old frame
+            self.frame.destroy()
+            #creating a new frame
+            SendEmail(self.root)
         except:
             self.controlbl["text"] = "WRONG DATA!"
 
 class SendEmail:
     def __init__(self, root):
-        #Top frame
-        self.frame = Frame(root)
-        self.frame.grid(column=0, row=0, columnspan=4, rowspan=4)
+        self.top = Frame(root)
+        self.top.grid()
         #label 1 { Email : }
-        self.lbl1 = Label(self.frame, text="Email :")
+        self.lbl1 = Label(self.top, text="Email :")
         self.lbl1.grid(column=0, row=0)
-
-
-            
         
-
 def main():
     root = Tk()
     root.title("Email Manager")
@@ -59,7 +58,3 @@ def main():
     root.mainloop()
 
 main()
-
-
-    
-    
