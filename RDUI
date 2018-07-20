@@ -1,0 +1,39 @@
+#define pwr1 9
+#define pwr2 10
+#define directionPin1 5
+#define directionPin2 6
+#define directionPin3 7
+#define directionPin4 8
+
+void setup(){
+  //INIZIALIZZO LA SERIALE
+  Serial.begin(9600);
+  //DEFINISCO I/O DELLE VARIABILI
+  pinMode(directionPin1, OUTPUT);
+  pinMode(directionPin2, OUTPUT);
+  pinMode(directionPin3, OUTPUT);
+  pinMode(directionPin4, OUTPUT);
+  pinMode(pwr1, OUTPUT);
+  pinMode(pwr2, OUTPUT);
+  //INIZIALIZZO I PIN
+    //PIN DI DIREZIONE
+  digitalWrite(directionPin1, HIGH);
+  digitalWrite(directionPin2, LOW);
+  digitalWrite(directionPin3, HIGH);
+  digitalWrite(directionPin4, LOW);
+    //PIN DI ON/OFF
+  digitalWrite(pwr1, LOW);
+  digitalWrite(pwr2, LOW);
+  
+  Serial.println("Configurazione eseguita!");
+}
+void loop(){
+  Serial.println("HIGH");
+  digitalWrite(pwr1, HIGH);
+  digitalWrite(pwr2, HIGH);
+  delay(1000);
+  Serial.println("LOW");
+  digitalWrite(pwr1, LOW);
+  digitalWrite(pwr2, LOW);
+  delay(1000);
+}
